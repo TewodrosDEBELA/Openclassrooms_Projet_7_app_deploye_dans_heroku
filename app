@@ -15,8 +15,8 @@ app = Flask(__name__)
 # tell Flask to use the above defined config
 
 clf = load('lgbm_classifier.pickle')
-z = ZipFile("X_sample.zip")
-sample = pd.read_csv(z.open('X_sample.csv'), index_col='SK_ID_CURR', encoding ='utf-8')
+
+sample = pd.read_csv('X_test_test.csv', index_col='SK_ID_CURR', encoding ='utf-8')
 
 X=sample.copy()
 
