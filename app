@@ -21,7 +21,7 @@ sample = pd.read_csv('X_test_test.csv', index_col='SK_ID_CURR', encoding ='utf-8
 
 #X=sample.copy()
 
-clf.predict_proba(sample.loc[[362145]])[:,1]
+clf.predict_proba(sample.loc[[130370]])[:,1]
 
 
 @app.route('/home')
