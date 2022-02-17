@@ -1,5 +1,6 @@
 import numpy as np
 from flask import Flask, request, jsonify, render_template
+from app import app
 import pickle
 import pandas as pd
 from joblib import load, dump
