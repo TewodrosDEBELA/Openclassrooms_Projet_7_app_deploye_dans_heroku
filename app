@@ -18,9 +18,9 @@ clf = load('lgbm_classifier.pickle')
 
 sample = pd.read_csv('X_test_test.csv', index_col='SK_ID_CURR', encoding ='utf-8')
 
-X=sample.copy()
+#X=sample.copy()
 
-clf.predict_proba(X.loc[[362145]])[:,1]
+clf.predict_proba(sample.loc[[362145]])[:,1]
 
 
 @app.route('/home')
@@ -36,8 +36,8 @@ def home():
 def credit(id_client):
     
         id = id_client
-        score = clf.predict_proba(X.loc[[id]])[:,1]
-        predict = clf.predict(X.loc[[id]])
+        score = clf.predict_proba(sample.loc[[id]])[:,1]
+        predict = clf.predict(sample.loc[[id]])
 
         # round the predict proba value and set to new variable
         percent_score = score*100
