@@ -1,10 +1,8 @@
 import numpy as np
 from flask import Flask, request, jsonify, render_template
-from app import app
 import pickle
 import pandas as pd
-from joblib import load, dump
-from zipfile import ZipFile
+from joblib import load
 import json
 from lightgbm import LGBMClassifier
 
@@ -54,5 +52,5 @@ def credit(id_client):
   #API_url = "http://127.0.0.1:5000/credit/" + '<int:id_client>'     
     
 if __name__ == '__main__':
-   app.run(debug=False)
+   app.run()
 
