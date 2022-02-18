@@ -24,7 +24,7 @@ clf.predict_proba(sample.loc[[130370]])[:,1]
 
 @app.route('/home')
 def home():
-    return jsonify(username='eduCBA' , account='Premium' , validity='200 days')
+    return 'Hello World'
     
 
 @app.route('/credit/', methods=['GET'])
