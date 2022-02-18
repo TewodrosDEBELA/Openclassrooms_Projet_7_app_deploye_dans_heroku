@@ -32,9 +32,9 @@ def home():
 @app.route('/credit/<int:id_client>' , methods=['GET'])
 
 
-def credit(id_client):
+def credit(SK_ID_CURR):
     
-        id = id_client
+        id = SK_ID_CURR
         score = clf.predict_proba(sample.loc[[id]])[:,1]
         predict = clf.predict(sample.loc[[id]])
 
@@ -47,7 +47,7 @@ def credit(id_client):
 
         print('Nouvelle Prédiction : \n', output)
         
-        return jsonify(output)
+        return output
     
   #API_url = "http://127.0.0.1:5000/credit/" + '<int:id_client>'     
     
