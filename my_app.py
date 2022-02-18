@@ -15,7 +15,7 @@ app = Flask(__name__)
 
 # tell Flask to use the above defined config
 
-clf = load('lgbm_classifier.pickle')
+clf = pickle.load(open('lgbm_classifier.pickle', 'rb'))
 
 sample = pd.read_csv('X_test_test.csv', index_col='SK_ID_CURR', encoding ='utf-8')
 
