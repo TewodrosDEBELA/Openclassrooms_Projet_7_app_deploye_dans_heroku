@@ -2,7 +2,7 @@
 """
 Created on Fri Feb 18 23:41:36 2022
 
-@author: Tewod
+@author: Tewodros
 """
 import numpy as np
 from flask import Flask, request, jsonify, render_template
@@ -15,23 +15,12 @@ from lightgbm import LGBMClassifier
 
 app = Flask(__name__)
 
-#API_url = "http://127.0.0.1:5000/credit/" + id_client
-
-# tell Flask to use the above defined config
-
-clf = pickle.load(open('lgbm_classifier.pickle', 'rb'))
-
-sample = pd.read_csv('X_test_sample.csv', index_col='SK_ID_CURR', encoding ='utf-8')
-
-#X=sample.copy()
-
-clf.predict_proba(sample.loc[[362145]])[:,1]
-
-
-@app.route('/home')
-def home():
-    return 'Hello World'
-    
+@app.route("/")
+def hello():
+    """
+    Ping the API.
+    """
+    return jsonify({"text":"Hello, the API is intended for predicting credit risk" })
 
 @app.route('/credit/', methods=['GET'])
 
@@ -39,7 +28,12 @@ def home():
 
 
 def credit(id_client):
-    
+        pickle_in = open('lgbm_classifier.pickle', 'rb') 
+
+        clf = pickle.load(pickle_in)
+        sample = pd.read_csv('X_test_sample.csv', index_col='SK_ID_CURR', encoding ='utf-8')
+         # Testing with one client id
+       
         id = id_client
         score = clf.predict_proba(sample.loc[[id]])[:,1]
         predict = clf.predict(sample.loc[[id]])
@@ -55,7 +49,7 @@ def credit(id_client):
         
         return output
     
-  #API_url = "http://127.0.0.1:5000/credit/" + '<int:id_client>'     
+     
     
 if __name__ == '__main__':
      app.run()
