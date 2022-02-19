@@ -21,7 +21,7 @@ app = Flask(__name__)
 
 clf = pickle.load(open('lgbm_classifier.pickle', 'rb'))
 
-sample = pd.read_csv(r'C:\Users\Tewod\OneDrive\Bureau\Openclassrooms\projets\projet7\OpenClassrooms-Project7\X_test_sample.csv', index_col='SK_ID_CURR', encoding ='utf-8')
+sample = pd.read_csv('X_test_sample.csv', index_col='SK_ID_CURR', encoding ='utf-8')
 
 #X=sample.copy()
 
